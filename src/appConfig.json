@@ -1,0 +1,52 @@
+{
+  "title": "American Food Store Zadar",
+  "url": "TODO",
+  "mainColor": "#B8231F",
+  "companyData": {
+    "title": "American Food Store Zadar",
+    "addressLine1": "Polačišće 2, Zadar",
+    "addressLine2": "City Galleria (stari dio)",
+    "addressLine3": "2. kat lijevo",
+    "addressLine4": "",
+    "country": "Hrvatska",
+    "registrationNumber": "",
+    "OIB": "45285939281",
+    "telephone": "+385 91 6046 445",
+    "email": "info@horizon-escape.hr",
+    "bank": "Privredna Banka Zagreb",
+    "bankSwiftOrBic": "PBZGHR2X",
+    "IBAN": "HR9523400091111344203"
+  },
+  "dashboard": {
+    "mainParagraph": "American Food Store Zadar mjesto je gdje počinje Vaše putovanje kroz okuse Amerike — autentično, bogato i puno otkrića.",
+    "leftSideTitle": "Američki Okusi",
+    "leftSideText": "U American Food Storeu donosimo najbolje od američke gastronomije — od kultnih grickalica i poznatih brendova, do proizvoda koje kod nas ne možete pronaći u klasičnim trgovinama. Svaki artikl pažljivo biramo kako bismo vam približili pravi duh američke kuhinje i lifestylea.",
+    "rightSideTitle": "Naša Misija",
+    "rightSideText": "Naša misija je jednostavna: učiniti američke proizvode dostupnima svima koji žele nešto drugačije. Bilo da tražite omiljene slatkiše, ekskluzivne umake ili pića koja se ne nalaze nigdje drugdje — mi donosimo Ameriku u Zadar. Kvaliteta, originalnost i ljubav prema hrani temelji su našeg poslovanja."
+  },
+  "aboutUs": {
+    "mainParagraph": "American Food Store Zadar nastao je iz želje da američke okuse približimo svima koji vole istraživati nove proizvode i uživati u nečemu drugačijem.",
+    "secondParagraph": "Inspirirani bogatom američkom kulturom hrane, stvaramo mjesto gdje se tradicija, moderan lifestyle i neodoljivi okusi spajaju u jedno. Naša ponuda raste iz dana u dan — jer vjerujemo da dobar zalogaj može uljepšati dan, probuditi nostalgiju ili stvoriti novo iskustvo.",
+    "leftSideTitle": "Zašto američki proizvodi?",
+    "leftSideText": "Američka prehrambena industrija donosi raznolikost kakvu rijetko gdje možete pronaći. Od kultnih brendova do malih proizvođača — svaki proizvod priča svoju priču. Naš je cilj pružiti vam autentičan izbor i pretvoriti shopping u užitak pun otkrića.",
+    "rightSideTitle": "Naš Put",
+    "rightSideText": "Krenuli smo s jednostavnom idejom: ponuditi proizvode koje i sami volimo. Danas smo ponosni što smo postali prepoznatljiva trgovina za sve ljubitelje američkih okusa. American Food Store Zadar kombinira kvalitetan izbor, brzu dostavu i toplu, prijateljsku uslugu."
+  },
+  "useHead": {
+    "keywords": "American Food Store Zadar, američki proizvodi, američka hrana, američki slatkiši, American snacks, američka trgovina Zadar, webshop američka hrana",
+    "dashboardContent": "American Food Store Zadar - Vaša destinacija za najbolje američke proizvode, originalne brendove i autentične okuse Amerike.",
+    "images": {
+      "favicon180": "https://res.cloudinary.com/dzfq1g42d/image/upload/v1763896882/favicon-180x180_i7alb1.png",
+      "favicon96": "https://res.cloudinary.com/dzfq1g42d/image/upload/v1763896882/favicon-96x96_qae8z3.png",
+      "favicon32": "https://res.cloudinary.com/dzfq1g42d/image/upload/v1763896882/favicon-32x32_vcy1jd.png",
+      "favicon16": "https://res.cloudinary.com/dzfq1g42d/image/upload/v1763896882/favicon-16x16_awp8xw.png"
+    }
+  },
+  "links": {
+    "facebook": "",
+    "instagram": "https://www.instagram.com/american_food_store_zadar/#",
+    "tikTok": ""
+  },
+  "copyrightYear": "2025",
+  "googleMapSrc": "https://www.google.com/maps?q=City%20Galleria%20Zadar&hl=hr&z=17&output=embed"
+}
