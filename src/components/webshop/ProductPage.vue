@@ -117,10 +117,15 @@ function handleAddToCart(viewport: any) {
         >
       </ElRow>
       <ElRow justify="center" align="middle" class="mb-24">
-        <div class="add-button" @click="handleAddToCart($viewport)">
+        <div
+          v-if="product.available"
+          class="add-button"
+          @click="handleAddToCart($viewport)"
+        >
           <ElIcon :size="20" class="mr-8"><ShoppingCart /></ElIcon>
           Dodaj u košaricu
         </div>
+        <h3 v-else class="color-danger">NEDOSTUPNO</h3>
       </ElRow>
       <ElRow class="mb-12 social-share-buttons">
         <FacebookShareButton class="mr-4" />

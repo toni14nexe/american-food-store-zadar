@@ -48,6 +48,8 @@ model Product {
   price             Decimal         @db.Decimal(10, 2)
   discountPrice     Decimal?        @db.Decimal(10, 2)
   sold              Int             @default(0)
+  available         Boolean?        @default(true)
+  verified          Boolean?        @default(false)
   images            String[]
   videos            String[]
   createdAt         DateTime        @default(now())

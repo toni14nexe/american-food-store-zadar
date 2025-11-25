@@ -30,6 +30,7 @@ interface RuleForm {
   price: number
   discountPriceSwitch: boolean
   discountPrice: undefined | number
+  available: boolean
 }
 type DialogType = 'create' | 'edit' | 'delete' | 'unarchive'
 
@@ -74,7 +75,8 @@ const form = reactive<RuleForm>({
   videos: [],
   price: 0,
   discountPriceSwitch: false,
-  discountPrice: undefined
+  discountPrice: undefined,
+  available: true
 })
 const ruleFormRef = ref<FormInstance>()
 const rules = reactive<FormRules<RuleForm>>({
@@ -155,6 +157,7 @@ function openDialog(type: DialogType, item?: Product) {
     form.productCategoryId = String(item.productCategoryId)
     form.name = String(item.name)
     form.description = String(item.description)
+    form.available = Boolean(item.available)
     form.price = Number(item.price)
     form.discountPriceSwitch = item.discountPrice ? true : false
     form.discountPrice = item.discountPrice ? item.discountPrice : undefined
@@ -243,6 +246,7 @@ function handleCloseDialog() {
   form.name = ''
   form.description = ''
   form.price = 0
+  form.available = true
   form.discountPriceSwitch = false
   form.discountPrice = undefined
   form.images = null
@@ -439,6 +443,13 @@ async function cloudinaryUpload(file: File, resourceType: 'image' | 'video') {
     >
       <ElTableColumn label="Naziv" prop="name" />
       <ElTableColumn label="Kategorija" prop="productCategory.name" />
+      <ElTableColumn label="Dostupnost">
+        <template #default="items">
+          <ElTag :type="items.row.available ? 'success' : 'danger'">
+            {{ items.row.available ? 'Dostupno' : 'Nedostupno' }}
+          </ElTag>
+        </template>
+      </ElTableColumn>
       <ElTableColumn label="Akcije" align="center" width="148">
         <template #default="items">
           <ElButton type="primary" plain @click="openDialog('edit', items.row)">
@@ -576,6 +587,15 @@ async function cloudinaryUpload(file: File, resourceType: 'image' | 'video') {
             <Editor v-model="form.description" class="editor" />
           </ElFormItem>
         </div>
+        <ElFormItem label="Dostupnost" class="mt-20">
+          <ElSwitch
+            v-model="form.available"
+            size="large"
+            active-text="Dostupan"
+            inactive-text="Nedostupan"
+            @change="form.discountPrice = undefined"
+          />
+        </ElFormItem>
         <ElFormItem label="Cijena" prop="price" class="mt-20">
           <ElInputNumber
             v-model="form.price"

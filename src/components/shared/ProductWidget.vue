@@ -13,7 +13,15 @@ defineProps(['product'])
     <NuxtLink :to="`/webshop/${product.productCategory.name}/${product.id}`">
       <div class="product-opacity-container" />
       <div class="product-text-container">
-        <h3>{{ truncateText(product.name, 105) }}</h3>
+        <h3 class="product-name">{{ truncateText(product.name, 105) }}</h3>
+        <ElRow
+          v-if="!product.available"
+          class="datetime mb-24 unavailable-product"
+          align="middle"
+          justify="center"
+        >
+          NEDOSTUPNO
+        </ElRow>
         <div>
           <ElRow class="datetime mb-16" align="middle" justify="center">
             <ElIcon :size="18" class="mr-8">
@@ -86,8 +94,17 @@ defineProps(['product'])
   align-items: center;
   color: white;
   text-align: center;
-  padding: 16px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.product-name {
+  padding: 16px;
+}
+.unavailable-product {
+  background-color: black;
+  color: var(--el-color-danger);
+  width: 100%;
+  opacity: 0.8;
+  padding: 8px 0;
 }
 .line-throuht-text {
   text-decoration: line-through;
