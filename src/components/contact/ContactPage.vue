@@ -85,96 +85,98 @@ async function sendMessage(formEl: FormInstance | undefined) {
       </ClientOnly>
     </ElRow>
 
-    <ElRow align="middle">
-      <ElCol>
-        <span
-          ><b>Imate pitanje, prijedlog ili želite podijeliti dojam?</b></span
-        >
-      </ElCol>
-      <ElCol>
-        <span><b>Tu smo da slušamo, odgovorimo i povežemo se.</b></span>
-      </ElCol>
-    </ElRow>
-    <ElRow align="middle"> </ElRow>
-    <ElRow align="middle">
-      <ElCol>
+    <div class="px-16">
+      <ElRow align="middle">
+        <ElCol>
+          <span
+            ><b>Imate pitanje, prijedlog ili želite podijeliti dojam?</b></span
+          >
+        </ElCol>
+        <ElCol>
+          <span><b>Tu smo da slušamo, odgovorimo i povežemo se.</b></span>
+        </ElCol>
+      </ElRow>
+      <ElRow align="middle"> </ElRow>
+      <ElRow align="middle">
+        <ElCol>
+          <p>
+            Bilo da vas zanima rad, suradnja, ili jednostavno želite reći “hej”
+            — slobodno nam pišite.
+          </p>
+        </ElCol>
+        <ElCol>
+          <span>Vaša poruka nam znači.</span>
+        </ElCol>
+      </ElRow>
+      <ElRow align="middle">
         <p>
-          Bilo da vas zanima rad, suradnja, ili jednostavno želite reći “hej” —
-          slobodno nam pišite.
+          Kontaktirajte nas putem obrasca ispod ili na našu email adresu:
+          <a :href="`mailto:${appConfig.companyData.email}`">
+            {{ appConfig.companyData.email }}
+          </a>
         </p>
-      </ElCol>
-      <ElCol>
-        <span>Vaša poruka nam znači.</span>
-      </ElCol>
-    </ElRow>
-    <ElRow align="middle">
-      <p>
-        Kontaktirajte nas putem obrasca ispod ili na našu email adresu:
-        <a :href="`mailto:${appConfig.companyData.email}`">
-          {{ appConfig.companyData.email }}
-        </a>
-      </p>
-    </ElRow>
+      </ElRow>
 
-    <ElRow justify="center">
-      <ElForm
-        :label-position="$viewport.isLessThan('tablet') ? 'top' : 'left'"
-        require-asterisk-position="right"
-        ref="ruleFormRef"
-        class="form"
-        :model="form"
-        :rules="rules"
-        label-width="auto"
-        status-icon
-        style="width: 100%"
-      >
-        <ElFormItem label="" prop="fullname">
-          <ElInput
-            v-model="form.fullname"
-            type="text"
-            placeholder="Pero Perić"
-            class="max-w-250"
-          />
-        </ElFormItem>
-        <ElFormItem label="" prop="email">
-          <ElInput
-            v-model="form.email"
-            type="text"
-            placeholder="pero.peric@mail.com"
-            class="max-w-250"
-          />
-        </ElFormItem>
-        <ElFormItem prop="message">
-          <ElInput
-            v-model="form.message"
-            :autosize="{ minRows: 6 }"
-            type="textarea"
-            placeholder="Poruka..."
-          />
-        </ElFormItem>
-        <ElRow
-          align="middle"
-          :justify="$viewport.isLessThan('tablet') ? 'center' : 'end'"
-          class="mt-16"
+      <ElRow justify="center">
+        <ElForm
+          :label-position="$viewport.isLessThan('tablet') ? 'top' : 'left'"
+          require-asterisk-position="right"
+          ref="ruleFormRef"
+          class="form"
+          :model="form"
+          :rules="rules"
+          label-width="auto"
+          status-icon
+          style="width: 100%"
         >
-          <ElButton
-            type="primary"
-            :loading="loading.submit"
-            @click="sendMessage(ruleFormRef)"
-            size="large"
-            >Pošalji
-          </ElButton>
-        </ElRow>
-      </ElForm>
-    </ElRow>
+          <ElFormItem label="" prop="fullname">
+            <ElInput
+              v-model="form.fullname"
+              type="text"
+              placeholder="Pero Perić"
+              class="max-w-250"
+            />
+          </ElFormItem>
+          <ElFormItem label="" prop="email">
+            <ElInput
+              v-model="form.email"
+              type="text"
+              placeholder="pero.peric@mail.com"
+              class="max-w-250"
+            />
+          </ElFormItem>
+          <ElFormItem prop="message">
+            <ElInput
+              v-model="form.message"
+              :autosize="{ minRows: 6 }"
+              type="textarea"
+              placeholder="Poruka..."
+            />
+          </ElFormItem>
+          <ElRow
+            align="middle"
+            :justify="$viewport.isLessThan('tablet') ? 'center' : 'end'"
+            class="mt-16"
+          >
+            <ElButton
+              type="primary"
+              :loading="loading.submit"
+              @click="sendMessage(ruleFormRef)"
+              size="large"
+              >Pošalji
+            </ElButton>
+          </ElRow>
+        </ElForm>
+      </ElRow>
 
-    <CompanyDetails class="mt-24" align="left" />
+      <CompanyDetails class="mt-24" align="left" />
 
-    <ExternalLinks class="mt-24" />
+      <ExternalLinks class="mt-24" />
 
-    <ElRow justify="center" align="middle" class="w-100 mt-24">
-      <GoogleMap />
-    </ElRow>
+      <ElRow justify="center" align="middle" class="w-100 mt-24">
+        <GoogleMap />
+      </ElRow>
+    </div>
   </div>
 </template>
 
