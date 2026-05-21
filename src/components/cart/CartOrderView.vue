@@ -42,7 +42,8 @@ const form = reactive<RuleForm>({
   payment: ''
 })
 const shippingOptions = ref<ShippingOption[]>([
-  { label: 'Osobno preuzimanje', price: 0 }
+  { label: 'Osobno preuzimanje', price: 0 },
+  { label: 'BoxNow', price: 5 }
 ])
 const rules = reactive<FormRules<RuleForm>>({
   buyerFullname: [
