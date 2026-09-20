@@ -36,6 +36,7 @@ export default defineEventHandler(async event => {
         videos: body.videos || [],
         productCategoryId: body.productCategoryId,
         discountPrice: body.discountPrice ? body.discountPrice : null,
+        anchorPrice: body.anchorPrice ?? undefined,
         updatedAt: new Date()
       }
     })

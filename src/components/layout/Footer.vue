@@ -85,6 +85,15 @@ const mainCategories = ref([
     >
       <NuxtLink to="/online-placanje" class="link"> Online plaćanje </NuxtLink>
     </ElRow>
+    <ElRow
+      justify="center"
+      align="middle"
+      class="w-100 color-zinc text-align-center"
+    >
+      <a href="/api/cjenik.xml" target="_blank" rel="noopener" class="link">
+        Cjenik (XML)
+      </a>
+    </ElRow>
 
     <ElRow
       justify="center"

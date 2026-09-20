@@ -31,6 +31,7 @@ export type Product = {
   description: String | null
   price: number | null
   discountPrice: number | null
+  anchorPrice: number
   sold: Number
   available: Boolean
   images: String[]

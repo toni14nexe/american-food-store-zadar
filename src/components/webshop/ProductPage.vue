@@ -107,15 +107,20 @@ function handleAddToCart(viewport: any) {
         </ElCol>
       </ElRow>
       <div v-html="parsedHtml" class="product-content mb-24" />
-      <ElRow align="middle" class="mb-24 product-price">
-        Cijena:
-        <b class="ml-4" :class="{ 'line-throuht-text': product.discountPrice }"
-          >{{ Number(product.price).toFixed(2) }} €</b
-        >
-        <b class="ml-12" v-if="product.discountPrice"
-          >{{ Number(product.discountPrice).toFixed(2) }} €</b
-        >
-      </ElRow>
+      <div class="mb-24">
+        <ElRow align="middle" class="product-price">
+          Cijena:
+          <b class="ml-4" :class="{ 'line-throuht-text': product.discountPrice }"
+            >{{ Number(product.price).toFixed(2) }} €</b
+          >
+          <b class="ml-12" v-if="product.discountPrice"
+            >{{ Number(product.discountPrice).toFixed(2) }} €</b
+          >
+        </ElRow>
+        <div v-if="product.anchorPrice" class="anchor-price">
+          sidrena cijena: {{ Number(product.anchorPrice).toFixed(2) }} €
+        </div>
+      </div>
       <ElRow justify="center" align="middle" class="mb-24">
         <div
           v-if="product.available"
@@ -161,6 +166,11 @@ h3 {
 .line-throuht-text {
   text-decoration: line-through;
   text-decoration-thickness: 3px;
+}
+.anchor-price {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--el-text-color-secondary);
 }
 .add-button {
   background-color: #d9d9d9;

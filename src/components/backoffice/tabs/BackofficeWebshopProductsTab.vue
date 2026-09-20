@@ -28,6 +28,7 @@ interface RuleForm {
   images: String[] | null
   videos: String[] | null
   price: number
+  anchorPrice: number
   discountPriceSwitch: boolean
   discountPrice: undefined | number
   available: boolean
@@ -74,10 +75,21 @@ const form = reactive<RuleForm>({
   images: [],
   videos: [],
   price: 0,
+  anchorPrice: 0,
   discountPriceSwitch: false,
   discountPrice: undefined,
   available: true
 })
+// On create the anchor price follows the regular price until edited manually.
+const anchorPriceTouched = ref(false)
+watch(
+  () => form.price,
+  newPrice => {
+    if (dialog.value.type === 'create' && !anchorPriceTouched.value) {
+      form.anchorPrice = newPrice
+    }
+  }
+)
 const ruleFormRef = ref<FormInstance>()
 const rules = reactive<FormRules<RuleForm>>({
   productCategoryId: [
@@ -95,6 +107,13 @@ const rules = reactive<FormRules<RuleForm>>({
   ],
   price: [
     { required: true, message: 'Unesite cijenu proizvoda', trigger: 'blur' }
+  ],
+  anchorPrice: [
+    {
+      required: true,
+      message: 'Unesite sidrenu cijenu proizvoda',
+      trigger: 'blur'
+    }
   ],
   discountPrice: [
     {
@@ -159,6 +178,9 @@ function openDialog(type: DialogType, item?: Product) {
     form.description = String(item.description)
     form.available = Boolean(item.available)
     form.price = Number(item.price)
+    form.anchorPrice = Number(item.anchorPrice ?? item.price)
+    // Existing product: never overwrite its fixed anchor price when price changes.
+    anchorPriceTouched.value = true
     form.discountPriceSwitch = item.discountPrice ? true : false
     form.discountPrice = item.discountPrice ? item.discountPrice : undefined
     form.images = item.images ? item.images : null
@@ -246,6 +268,8 @@ function handleCloseDialog() {
   form.name = ''
   form.description = ''
   form.price = 0
+  form.anchorPrice = 0
+  anchorPriceTouched.value = false
   form.available = true
   form.discountPriceSwitch = false
   form.discountPrice = undefined
@@ -443,6 +467,11 @@ async function cloudinaryUpload(file: File, resourceType: 'image' | 'video') {
     >
       <ElTableColumn label="Naziv" prop="name" />
       <ElTableColumn label="Kategorija" prop="productCategory.name" />
+      <ElTableColumn label="Sidrena cijena">
+        <template #default="items">
+          {{ Number(items.row.anchorPrice).toFixed(2) }} €
+        </template>
+      </ElTableColumn>
       <ElTableColumn label="Dostupnost">
         <template #default="items">
           <ElTag :type="items.row.available ? 'success' : 'danger'">
@@ -605,6 +634,21 @@ async function cloudinaryUpload(file: File, resourceType: 'image' | 'video') {
             class="input-width"
           />
         </ElFormItem>
+        <ElFormItem label="Sidrena cijena" prop="anchorPrice" class="mt-20">
+          <ElInputNumber
+            v-model="form.anchorPrice"
+            :precision="2"
+            placeholder="1.99"
+            :step="0.01"
+            class="input-width"
+            @change="anchorPriceTouched = true"
+          />
+        </ElFormItem>
+        <p class="color-zinc">
+          Sidrena cijena je referentna cijena proizvoda prema Zakonu o sidrenim
+          cijenama (obveza od 1.10.2026.) i prikazuje se uz cijenu. Mijenjajte je
+          samo ako je to potrebno.
+        </p>
         <ElFormItem label="Akcija" class="mt-20">
           <ElSwitch
             v-model="form.discountPriceSwitch"

@@ -14,6 +14,7 @@ export default defineEventHandler(async event => {
         images: body.images || [],
         videos: body.videos || [],
         discountPrice: body.discountPrice,
+        anchorPrice: body.anchorPrice ?? body.price,
         productCategory: {
           connect: {
             id: body.productCategoryId

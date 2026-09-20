@@ -34,6 +34,14 @@ defineProps(['product'])
               {{ Number(product.discountPrice).toFixed(2) }}
             </span>
           </ElRow>
+          <ElRow
+            v-if="product.anchorPrice"
+            class="anchor-price mb-16"
+            align="middle"
+            justify="center"
+          >
+            sidrena cijena: {{ Number(product.anchorPrice).toFixed(2) }} €
+          </ElRow>
         </div>
       </div>
     </NuxtLink>
@@ -109,6 +117,13 @@ defineProps(['product'])
 .line-throuht-text {
   text-decoration: line-through;
   text-decoration-thickness: 3px;
+}
+.anchor-price {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  text-shadow: none;
+  margin-top: -8px;
 }
 .datetime {
   font-size: 28px;
